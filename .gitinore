@@ -1,5 +1,4 @@
-###Python###
-
+.ipynb_checkpoints
 *.py[cod]
 
 # C extensions
@@ -36,8 +35,6 @@ nosetests.xml
 .mr.developer.cfg
 .project
 .pydevproject
-
-.ipynb_checkpoints/
 
 MANIFEST
 build
