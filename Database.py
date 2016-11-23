@@ -2,7 +2,7 @@ import pandas as pd
 import sqlite3
 
 # Open Connection to SQLite database
-con = sqlite3.connect("../documents.sqlite")
+con = sqlite3.connect("../publications.sqlite")
 
 # Read CSV into a pandas DataFrame
 df = pd.read_csv('../scholars_publications.csv', sep="\t")
