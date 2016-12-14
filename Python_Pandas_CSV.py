@@ -40,16 +40,31 @@ def get_cocoauthors(name):
 
     # For each coauthor, get *their* coauthors
     for mycoauthor, row in mycoauthors.iterrows():
-        # print(index)
         theircoauthors = get_coauthors(mycoauthor)
         mycocoauthors = pd.concat([mycocoauthors, theircoauthors], axis=1)
 
     return mycocoauthors, mycoauthors
 
 
+def exclude_mine(mycocoauthors, mycoauthors):
+    # Create an DataFrame for the results
+    excluded = mycocoauthors.copy(deep=True)
+
+    # For each coauthor, get *their* coauthors
+    for mycoauthor, row in mycoauthors.iterrows():
+        if mycoauthor in excluded.index:
+            # remove it
+            excluded.drop([mycoauthor], inplace=True)
+
+    return excluded
+
+
 if __name__ == "__main__":
-    mycocoauthors, mycoauthors = get_cocoauthors('Gregg E. Trahey')
+    me = 'Gregg E. Trahey'
+    mycocoauthors, mycoauthors = get_cocoauthors(me)
 
+    excluded = exclude_mine(mycocoauthors, mycoauthors)
 
+    excluded.drop([me], axis=1, inplace=True)
 
     print('end')
