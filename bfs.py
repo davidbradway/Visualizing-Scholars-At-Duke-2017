@@ -5,6 +5,7 @@ import scipy.io as sio
 import pickle
 import os
 import random
+import argparse
 
 author = pd.read_csv('../author.txt', encoding='cp1252', sep=";")
 # print(author.head())
@@ -43,25 +44,29 @@ else:
 
 def bfs_paths(graph, start, goal):
     # The queue contains a list of current nodes and the path to each of those nodes
+    visited = []
     queue = [(start, [start])]
     while queue:
         (vertex, path) = queue.pop(0)  # pop it from the bottom of the stack, not the last-in
-        # check all nodes before going to next depth
         # do not recheck any nodes already visited in the path
-        for nextNode in graph[vertex] - set(path):
-            if nextNode == goal:
-                # Found the goal! Return the path with the nextNode (goal) at the end
-                yield path + [nextNode]
-            else:
-                # Did not find the goal, add the nextNode to the queue for visiting later
-                queue.append((nextNode, path + [nextNode]))
+        if vertex not in visited:
+            visited.append(vertex)
+            # print(len(visited))
+
+            # check all nodes before going to next depth
+            for nextNode in graph[vertex] - set(path):
+                if nextNode == goal:
+                    # Found the goal! Return the path with the nextNode (goal) at the end
+                    yield path + [nextNode]
+                else:
+                    # Did not find the goal, add the nextNode to the queue for visiting later
+                    queue.append((nextNode, path + [nextNode]))
 
 
 def shortest_bfs_path(graph, start, goal):
     # check for trivial case
     if start == goal:
         return [start]
-
     try:
         return next(bfs_paths(graph, start, goal))
     except StopIteration:
@@ -80,7 +85,7 @@ def test_graph():
     # ['A', 'C', 'F']
 
 
-def find_bacon(faculty1 = 11, faculty2 = 286):
+def find_bacon(faculty1=11, faculty2=286):
     try:
         found_path = shortest_bfs_path(coauthorgraph, faculty1, faculty2)
         # print(found_path)
@@ -96,13 +101,19 @@ def print_path(found_path):
             print(link, author.loc[link - 1]['author name'])
 
 
-def loop_across(threshold = 8):
+def fprint_path(found_path, fid):
+    if found_path:
+        for link in found_path:
+            fid.write(str(link) + ', ' + author.loc[link - 1]['author name'] + '\n')
+
+
+def loop_across(threshold):
     longest_short_path = []
 
     lis1 = list(range(len(author)))
-    random.shuffle(lis1)
+    # random.shuffle(lis1)
     lis2 = list(range(len(author)))
-    random.shuffle(lis2)
+    # random.shuffle(lis2)
 
     for faculty1 in lis1:
         print(author.loc[faculty1]['author name'])
@@ -115,11 +126,28 @@ def loop_across(threshold = 8):
                     longest_short_path = current_path
                     print_path(longest_short_path)
                     print(" ")
+
+                    # f = open('../' + str(faculty1) + '_' + str(faculty2) + '_' + str(
+                    #    len(longest_short_path)) + '.txt', 'w')
+                    # fprint_path(longest_short_path, f)
+                    # f.close()
+
             if len(longest_short_path) > threshold:
                 return longest_short_path
 
 if __name__ == '__main__':
-    # longest_short_path = find_bacon(11, 284)
-    # print_path(longest_short_path)
+    path = loop_across(10)
 
-    path = loop_across(8)
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("faculty1", help="enter the ID of the first faculty", type=int)
+    parser.add_argument("faculty2", help="enter the ID of the second faculty", type=int)
+    args = parser.parse_args()
+
+    longest_short_path = find_bacon(args.faculty1, args.faculty2)
+    print_path(longest_short_path)
+
+    f = open('../' + str(args.faculty1) + '_' + str(args.faculty2) + '_' + str(len(longest_short_path)) + '.txt', 'w')
+    fprint_path(longest_short_path, f)
+    f.close()
+    """
