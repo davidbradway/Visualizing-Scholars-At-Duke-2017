@@ -1,6 +1,6 @@
 import pandas as pd
 import scipy.io as sio
-# import numpy as np
+import numpy as np
 
 author = pd.read_csv('../author.txt', encoding='cp1252', sep=";")
 # print(author.head())
@@ -60,11 +60,20 @@ def exclude_mine(mycocoauthors, mycoauthors):
 
 
 if __name__ == "__main__":
-    me = 'Gregg E. Trahey'
+    #me = 'Gregg E. Trahey'
+    me = 'Kathryn Radabaugh Nightingale'
     mycocoauthors, mycoauthors = get_cocoauthors(me)
 
     excluded = exclude_mine(mycocoauthors, mycoauthors)
-
     excluded.drop([me], axis=1, inplace=True)
 
-    print('end')
+    transposed = excluded.T
+
+    # Just look at number of people, not number of papers
+    transposed[transposed > 0] = 1
+    numbers = transposed.apply(np.sum)
+
+    numbers.sort_values(inplace=True, ascending=False)
+    top5 = numbers[:5]
+
+    print(top5)

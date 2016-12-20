@@ -110,33 +110,40 @@ def fprint_path(found_path, fid):
 def loop_across(threshold):
     longest_short_path = []
 
-    lis1 = list(range(len(author)))
+    lis1 = list(range(553, len(author)))
     # random.shuffle(lis1)
     lis2 = list(range(len(author)))
     # random.shuffle(lis2)
 
     for faculty1 in lis1:
-        print(author.loc[faculty1]['author name'])
+        # print(author.loc[faculty1]['author name'])
 
         for faculty2 in lis2:
             current_path = find_bacon(faculty1 + 1, faculty2 + 1)
 
             if len(current_path) > 1:
+
                 if len(current_path) > len(longest_short_path):
+                    print(len(current_path))
                     longest_short_path = current_path
                     print_path(longest_short_path)
                     print(" ")
 
-                    # f = open('../' + str(faculty1) + '_' + str(faculty2) + '_' + str(
-                    #    len(longest_short_path)) + '.txt', 'w')
-                    # fprint_path(longest_short_path, f)
-                    # f.close()
+                    f = open('../' + str(faculty1) + '_' + str(faculty2) + '_' + str(
+                        len(longest_short_path)) + '.txt', 'w')
+                    fprint_path(longest_short_path, f)
+                    f.close()
 
-            if len(longest_short_path) > threshold:
-                return longest_short_path
+                    # if len(longest_short_path) > threshold:
+                    #    return longest_short_path
+    print('done')
+
 
 if __name__ == '__main__':
-    path = loop_across(10)
+    path = loop_across(27)
+    f = open('../result.txt', 'w')
+    fprint_path(path, f)
+    f.close()
 
     """
     parser = argparse.ArgumentParser()
