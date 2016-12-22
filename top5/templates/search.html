@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<form action="" method="post" name="search">
+    {{ form.hidden_tag() }}
+    {{ form.autocomp(size=80) }}
+    <p><input type="submit" value="Search"></p>
+</form>
+
+<script>
+$(function() {
+    $.ajax({
+        url: '{{ url_for("autocomplete") }}'
+        }).done(function (data) {
+            $('#autocomplete').autocomplete({
+                source: data.json_list,
+                minLength: 3
+            });
+        });
+    });
+</script>
+{% endblock %}
