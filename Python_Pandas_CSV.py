@@ -59,9 +59,8 @@ def exclude_mine(mycocoauthors, mycoauthors):
     return excluded
 
 
-if __name__ == "__main__":
-    #me = 'Gregg E. Trahey'
-    me = 'Kathryn Radabaugh Nightingale'
+def main(name):
+    me = name
     mycocoauthors, mycoauthors = get_cocoauthors(me)
 
     excluded = exclude_mine(mycocoauthors, mycoauthors)
@@ -77,3 +76,10 @@ if __name__ == "__main__":
     top5 = numbers[:5]
 
     print(top5)
+
+
+if __name__ == "__main__":
+    #me = 'Gregg E. Trahey'
+    me = 'Kathryn Radabaugh Nightingale'
+
+    main(me)
