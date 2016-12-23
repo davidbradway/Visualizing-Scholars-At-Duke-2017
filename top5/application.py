@@ -5,10 +5,10 @@ import numpy as np
 
 """
 With whom should I be collaborating? Suggest Facebook friends
-Select all of my coauthors by name or key. (each non zero entry in my row)
+Select all coauthors of an entered name. (each non zero entry in my row)
 Select all their coauthors
-filter out those who were my coauthors
-Rank the remaining coauthors by the number of papers my coauthors published with them
+filter out those who were in first group of coauthors
+Rank the remaining coauthors by the number of my coauthors who published with them
 """
 
 author = pd.read_csv('../../author.txt', encoding='cp1252', sep=";")
@@ -56,7 +56,7 @@ def get_cocoauthors(name):
 
 
 def exclude_mine(mycocoauthors, mycoauthors):
-    # Create an DataFrame for the results
+    # Create a DataFrame for the results
     excluded = mycocoauthors.copy(deep=True)
 
     # For each coauthor, get *their* coauthors
@@ -92,7 +92,7 @@ def autocomplete():
     search = request.args.get('term')
 
     app.logger.debug(search)
-    return jsonify(json_list=NAMES) 
+    return jsonify(json_list=NAMES)
 
 
 @app.route('/',methods=['GET','POST'])
