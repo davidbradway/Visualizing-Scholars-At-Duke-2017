@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+
 <form action="" method="post" name="search">
     {{ form.hidden_tag() }}
     {{ form.autocomp() }}
@@ -18,4 +19,5 @@ $(function() {
         });
     });
 </script>
+
 {% endblock %}
