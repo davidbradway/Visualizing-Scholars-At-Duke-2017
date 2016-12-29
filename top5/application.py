@@ -25,7 +25,7 @@ coauthornetDF = pd.DataFrame(coauthornet,    # values
 app = Flask(__name__)
 app.config.from_object('config')
 
-from flask_wtf import Form
+from flask_wtf import FlaskForm as Form
 from wtforms import StringField
 from wtforms.validators import DataRequired
 
