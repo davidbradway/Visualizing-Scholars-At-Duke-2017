@@ -73,7 +73,10 @@ def main(name):
     mycocoauthors, mycoauthors = get_cocoauthors(me)
 
     excluded = exclude_mine(mycocoauthors, mycoauthors)
-    excluded.drop([me], axis=1, inplace=True)
+    try:
+        excluded.drop([me], axis=1, inplace=True)
+    except:
+        pass
 
     transposed = excluded.T
 
