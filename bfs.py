@@ -110,7 +110,7 @@ def fprint_path(found_path, fid):
 def loop_across(threshold):
     longest_short_path = []
 
-    lis1 = list(range(553, len(author)))
+    lis1 = list(range(1103, len(author)))
     # random.shuffle(lis1)
     lis2 = list(range(len(author)))
     # random.shuffle(lis2)
