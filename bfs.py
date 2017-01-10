@@ -55,12 +55,14 @@ def bfs_paths(graph, start, goal):
 
             # check all nodes before going to next depth
             for nextNode in graph[vertex] - set(path):
-                if nextNode == goal:
-                    # Found the goal! Return the path with the nextNode (goal) at the end
-                    yield path + [nextNode]
-                else:
-                    # Did not find the goal, add the nextNode to the queue for visiting later
-                    queue.append((nextNode, path + [nextNode]))
+                # Don't check nodes that we have already visited
+                if nextNode not in visited:
+                    if nextNode == goal:
+                        # Found the goal! Return the path with the nextNode (goal) at the end
+                        yield path + [nextNode]
+                    else:
+                        # Did not find the goal, add the nextNode to the queue for visiting later
+                        queue.append((nextNode, path + [nextNode]))
 
 
 def shortest_bfs_path(graph, start, goal):
@@ -107,7 +109,7 @@ def fprint_path(found_path, fid):
             fid.write(str(link) + ', ' + author.loc[link - 1]['author name'] + '\n')
 
 
-def loop_across(threshold):
+def loop_across():
     longest_short_path = []
 
     lis1 = list(range(len(author)))
@@ -121,7 +123,7 @@ def loop_across(threshold):
 
             if len(current_path) > 1:
 
-                if len(current_path) > len(longest_short_path):
+                if len(current_path) >= len(longest_short_path):
                     print(len(current_path))
                     longest_short_path = current_path
                     print_path(longest_short_path)
@@ -131,14 +133,12 @@ def loop_across(threshold):
                         len(longest_short_path)) + '.txt', 'w')
                     fprint_path(longest_short_path, f)
                     f.close()
-
-                    # if len(longest_short_path) > threshold:
-                    #    return longest_short_path
     print('done')
+    return longest_short_path
 
 
 if __name__ == '__main__':
-    path = loop_across(27)
+    path = loop_across()
     f = open('../result.txt', 'w')
     fprint_path(path, f)
     f.close()
