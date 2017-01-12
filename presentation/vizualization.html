@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8">
     <title>Presentation</title>
@@ -57,15 +57,30 @@
                     <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
                     <i class="fa fa-bar-chart fa-5x"></i>
                     <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
-                    <i class="fa fa-globe fa-5x"></i></h4>
+                    <i class="fa fa-globe fa-5x"></i></h2>
                     <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
                     <h3>a Visualization</h3>
                     <p><small>Created by <a target="_blank" href="https://gitlab.oit.duke.edu/dpb6">David Bradway</a> / <a target="_blank" href="http://twitter.com/davidbradway">@davidbradway</a></small></p>
                 </section>
 
                 <section>
-                    <h3>Hollywood vs Academia</h3>
-                    <p></p>
+                    <h2>Methods</h2>
+                    <ul>
+                        <li>I implemented a breadth-first search (BFS) in Python based on a post by <a target="_blank" href="http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/">Edd Mann</a></li>
+                        <li>For every combination of two authors, the links are traversed until the first (shortest) path is found.</li>
+                        <li>In the BFS algorithm, all links from the current node are checked before moving to the next depth of linked nodes.</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Results</h2>
+                    <ul>
+                        <li>In Hollywood, the largest known <a target="_blank" href="http://oracleofbacon.org">"Kevin Bacon number"</a> is 10. (There is only one actor who is ten links away from Kevin Bacon)</li>
+                        <li>In our dataset, the longest chains are 13 links connecting 14 co-authors</li>
+                        <li>These long chains all contain this series of co-authors: Michael C. Munger - John  Aldrich - D. Sunshine Hillygus - Jerome P. Reiter</li>
+                        <li>The links traverse a wide variety of disciplines through a series of small steps of related topics</li>
+                        <li>The following is an example 13-link chain:</li>
+                    </ul>
                 </section>
 
                 <!--<section>-->
@@ -183,6 +198,42 @@
                         <h3>Political Science<i class="fa fa-globe fa-5x"></i></h3>
                     </section>
                 </section>
+
+                <section>
+                    <section>
+                        <h2>Discussion: Hollywood vs Academia</h2>
+                        <h3>Movies:</h3>
+                        <ul>
+                            <li>Movies have a lot of actors!</li>
+                            <li>Besides the big names, think of all the small roles and unnamed characters that fill up the credits</li>
+                            <li>Actors play different types of characters in different genres</li>
+                            <li>This leads to greater connectedness and lower "Bacon Numbers"</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Discussion: Hollywood vs Academia</h2>
+                        <h3>Articles:</h3>
+                        <ul>
+                            <li>Journal articles, on the other hand, typically have only a few authors, from a small number of fields</li>
+                            <li>Authors' publishing tendencies are usually very focused, not jumping around to different fields</li>
+                            <li>This leads to the title of this project, "Ivory Towers", or isolated silos that are not densely connected to each other</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>References</h2>
+                    <ul>
+                        <li><a target="_blank" href="https://gitlab.oit.duke.edu/dpb6/Visualizing-Scholars-At-Duke-2017">Source code</a></li>
+                        <li><a target="_blank" href="https://scholars.duke.edu/">Scholars at Duke</a></li>
+                        <li><a target="_blank" href="http://oracleofbacon.org/">Oracle of Bacon</a></li>
+                        <li><a target="_blank" href="http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/">Edd Mann</a></li>
+                        <li><a target="_blank" href="https://vm-manage.oit.duke.edu/">Duke VM Manage</a> </li>
+                    </ul>
+                </section>
+
+
             </div>
         </div>
         <script src="lib/js/head.min.js"></script>
