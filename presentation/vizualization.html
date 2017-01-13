@@ -44,43 +44,75 @@
             <div class="slides">
 
                 <section>
-                    <h1>IvoryTowers</h1>
-                    <h2><i class="fa fa-flask fa-5x"></i>
-                    <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
-                    <i class="fa fa-plus fa-5x"></i>
-                    <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
-                    <i class="fa fa-gears fa-5x"></i>
-                    <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
-                    <i class="fa fa-envira fa-5x"></i>
-                    <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
-                    <i class="fa fa-pencil-square-o fa-5x"></i>
-                    <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
-                    <i class="fa fa-bar-chart fa-5x"></i>
-                    <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
-                    <i class="fa fa-globe fa-5x"></i></h2>
-                    <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
-                    <h3>a Visualization</h3>
-                    <p><small>Created by <a target="_blank" href="https://gitlab.oit.duke.edu/dpb6">David Bradway</a> / <a target="_blank" href="http://twitter.com/davidbradway">@davidbradway</a></small></p>
-                </section>
+                    <section>
+                        <h1>IvoryTowers</h1>
+                        <h2><i class="fa fa-flask fa-5x"></i>
+                        <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
+                        <i class="fa fa-plus fa-5x"></i>
+                        <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
+                        <i class="fa fa-gears fa-5x"></i>
+                        <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
+                        <i class="fa fa-envira fa-5x"></i>
+                        <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
+                        <i class="fa fa-pencil-square-o fa-5x"></i>
+                        <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
+                        <i class="fa fa-bar-chart fa-5x"></i>
+                        <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
+                        <i class="fa fa-globe fa-5x"></i></h2>
+                        <!-- <i class="fa fa-arrow-right fa-5x"></i> -->
+                        <h3>a Visualization</h3>
+                        <p><small>Created by <a target="_blank" href="https://gitlab.oit.duke.edu/dpb6">David Bradway</a> / <a target="_blank" href="http://twitter.com/davidbradway">@davidbradway</a></small></p>
+                    </section>
 
-                <section>
-                    <h2>Methods</h2>
-                    <ul>
-                        <li>I implemented a breadth-first search (BFS) in Python based on a post by <a target="_blank" href="http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/">Edd Mann</a></li>
-                        <li>For every combination of two authors, the links are traversed until the first (shortest) path is found.</li>
-                        <li>In the BFS algorithm, all links from the current node are checked before moving to the next depth of linked nodes.</li>
-                    </ul>
-                </section>
+                    <section>
+                        <h2>Methods</h2>
+                        <ul>
+                            <li>For this project, the coauthor network MATLAB file was reformatted as an <a target="_blank" href="https://en.wikipedia.org/wiki/Adjacency_list">adjacency list</a> in Python, since it was a fairly sparse graph</li>
+                            <li>I implemented a breadth-first search (BFS) in Python based on a post by <a target="_blank" href="http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/">Edd Mann</a></li>
+                            <li>For every combination of two authors, the links are traversed until the first (shortest) path is found.</li>
+                            <li>In the BFS algorithm, all links from the current node are checked before moving to the next depth of linked nodes.</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Force Diagram of Entire Network</h2>
+                        <img src="images/force.png"
+                            height="400"/>
+                        <ul>
+                            <li>The crescent shape are all notes that are not densely connected, or have no connections</li>
+                            <li>The star shape is highly connected and is likely where are the long chains are found</li>
+                        </ul>
+                    </section>
 
-                <section>
-                    <h2>Results</h2>
-                    <ul>
-                        <li>In Hollywood, the largest known <a target="_blank" href="http://oracleofbacon.org">"Kevin Bacon number"</a> is 10. (There is only one actor who is ten links away from Kevin Bacon)</li>
-                        <li>In our dataset, the longest chains are 13 links connecting 14 co-authors</li>
-                        <li>These long chains all contain this series of co-authors: Michael C. Munger - John  Aldrich - D. Sunshine Hillygus - Jerome P. Reiter</li>
-                        <li>The links traverse a wide variety of disciplines through a series of small steps of related topics</li>
-                        <li>The following is an example 13-link chain:</li>
-                    </ul>
+                    <section>
+                        <h2>Results</h2>
+                        <ul>
+                            <li>In Hollywood, the largest current <a target="_blank" href="http://oracleofbacon.org">"Kevin Bacon number"</a> is 10. (There is only one actor ten links from Kevin Bacon)</li>
+                            <li>Our longest chains are 13 links and 14 co-authors</li>
+                            <li>Interestingly, they all contain this series of co-authors: Michael C. Munger - John  Aldrich - D. Sunshine Hillygus - Jerome P. Reiter</li>
+                            <li>The papers span wide variety of disciplines connected via related topics</li>
+                            <li>The following slides are an example 13-link chain</li>
+                            <li>Notice the paper topics and department names</li>
+                        </ul>
+                    </section>
+
+                    <!-- <section> -->
+                        <!-- <h2>Example 13-link Chain</h2> -->
+                        <!-- <img src="images/force_chain.png" -->
+                            <!-- height="auto" -->
+                            <!-- viewBox="0 0 560 420"-->
+                            <!-- width="100%"/> -->
+                    <!-- </section> -->
+
+                    <section>
+                        <h2>Example 13-link Chain</h2>
+                        <img src="images/circle_chain.png"
+                            height="500"/>
+                        <ul>
+                            <li>The color bars represent different departments</li>
+                            <li>The lines are papers authored by connected faculty</li>
+                            <li>There is no shorter path between any authors in the chain</li>
+                        </ul>
+                    </section>
                 </section>
 
                 <!--<section>-->
@@ -90,18 +122,6 @@
                         <!--height="auto"-->
                         <!--width="100%"-->
                         <!--viewBox="0 0 560 420"/>-->
-                <!--</section>-->
-
-                <!--<section data-markdown>&lt;!&ndash; Slide &ndash;&gt;-->
-                    <!--<script type="text/template">-->
-                        <!--## Using Markdown in a Slide-->
-
-                        <!--A paragraph with some text and a [link](http://duke.edu).-->
-
-                        <!-- - The downside is this format only works for one slide at a time-->
-                        <!-- - To do an external Markdown file that creates lots of slides requires a webserver-->
-
-                    <!--</script>-->
                 <!--</section>-->
 
                 <!-- Example of nested vertical slides -->
@@ -202,7 +222,7 @@
                 <section>
                     <section>
                         <h2>Discussion: Hollywood vs Academia</h2>
-                        <h3>Movies:</h3>
+                        <h3>Movies</h3>
                         <ul>
                             <li>Movies have a lot of actors!</li>
                             <li>Besides the big names, think of all the small roles and unnamed characters that fill up the credits</li>
@@ -213,24 +233,25 @@
 
                     <section>
                         <h2>Discussion: Hollywood vs Academia</h2>
-                        <h3>Articles:</h3>
+                        <h3>Articles</h3>
                         <ul>
                             <li>Journal articles, on the other hand, typically have only a few authors, from a small number of fields</li>
                             <li>Authors' publishing tendencies are usually very focused, not jumping around to different fields</li>
                             <li>This leads to the title of this project, "Ivory Towers", or isolated silos that are not densely connected to each other</li>
                         </ul>
                     </section>
-                </section>
 
-                <section>
-                    <h2>References</h2>
-                    <ul>
-                        <li><a target="_blank" href="https://gitlab.oit.duke.edu/dpb6/Visualizing-Scholars-At-Duke-2017">Source code</a></li>
-                        <li><a target="_blank" href="https://scholars.duke.edu/">Scholars at Duke</a></li>
-                        <li><a target="_blank" href="http://oracleofbacon.org/">Oracle of Bacon</a></li>
-                        <li><a target="_blank" href="http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/">Edd Mann</a></li>
-                        <li><a target="_blank" href="https://vm-manage.oit.duke.edu/">Duke VM Manage</a> </li>
-                    </ul>
+                    <section>
+                        <h2>References</h2>
+                        <ul>
+                            <li><a target="_blank" href="https://en.wikipedia.org/wiki/Adjacency_list">Adjacency list</a> </li>
+                            <li><a target="_blank" href="https://gitlab.oit.duke.edu/dpb6/Visualizing-Scholars-At-Duke-2017">Source code</a></li>
+                            <li><a target="_blank" href="https://scholars.duke.edu/">Scholars at Duke</a></li>
+                            <li><a target="_blank" href="http://oracleofbacon.org/">Oracle of Bacon</a></li>
+                            <li><a target="_blank" href="http://eddmann.com/posts/depth-first-search-and-breadth-first-search-in-python/">Edd Mann</a></li>
+                            <li><a target="_blank" href="https://vm-manage.oit.duke.edu/">Duke VM Manage</a> </li>
+                        </ul>
+                    </section>
                 </section>
 
 
